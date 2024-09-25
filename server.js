@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const apiRoutes = require('./routes/api');
+const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 const app = express();
@@ -17,8 +18,11 @@ connectDB();
 // API Routes
 app.use('/api', apiRoutes);
 
+// Register routes
+app.use('/auth', authRoutes);
+
 // Error handling middleware
-const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require('./middlewares/errorHandler');
 app.use(errorHandler);
 
 // Server listen
