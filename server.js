@@ -21,6 +21,11 @@ app.use('/api', apiRoutes);
 // Register routes
 app.use('/auth', authRoutes);
 
+// Test Routes
+app.get('/api/test', (req, res) => {
+    res.send({ message: 'Hello from Express backend!' });
+});
+
 // Error handling middleware
 const errorHandler = require('./middlewares/errorHandler');
 app.use(errorHandler);
